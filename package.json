@@ -1,0 +1,15 @@
+{
+  "name": "logo-generator",
+  "version": "1.0.0",
+  "description": "## Description This program is a command-line application that will take in user input and create a logo based on the responses.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
