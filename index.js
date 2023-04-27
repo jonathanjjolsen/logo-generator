@@ -6,6 +6,14 @@ const questions = [
         name: 'charachters',
         message: 'Enter 3 charachters to be used for the logo.',
         type: 'input',
+        validate: async (input) => {
+            if (input.length < 1 || input.length > 3) {
+                console.log('\nInvalid number of characters. User must input at least 1 and no more than 3.')
+            }
+            else{
+                return true;
+            }
+        }
     },
     {
         name: 'textColor',
