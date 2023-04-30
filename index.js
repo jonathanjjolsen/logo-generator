@@ -1,5 +1,6 @@
 //Imports neccessary for program use.
 const inquirer = require('inquirer');
+const {Circle} = require('.lib/shapes.js')
 
 const questions = [
     {
@@ -35,6 +36,18 @@ const questions = [
         type: 'input',
     }
 ]
+
+class logo{
+    render(){
+        return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="200">${this.shapeElement}${this.textElement}</svg>`
+    }
+    setText(text, color) {
+        this.text = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`
+    }
+    setShape(shape) {
+        this.shapeElement = shape.render()
+    }
+}
 
 function init () {
     inquirer.prompt(questions)
