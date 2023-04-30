@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const {Circle} = require('.lib/shapes.js')
 
 const questions = [
+    //Array of questions to ask the user
     {
         name: 'charachters',
         message: 'Enter 3 charachters to be used for the logo.',
@@ -37,6 +38,7 @@ const questions = [
     }
 ]
 
+//Logo class to create the logo based on user inputs
 class logo{
     render(){
         return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="200">${this.shapeElement}${this.textElement}</svg>`
@@ -49,6 +51,7 @@ class logo{
     }
 }
 
+//Function to prompt the user with questions for logo generation
 function init () {
     inquirer.prompt(questions)
     .then((data) => {
