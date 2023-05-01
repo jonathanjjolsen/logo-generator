@@ -1,6 +1,7 @@
 //Imports neccessary for program use.
 const inquirer = require('inquirer');
 const {Circle} = require('.lib/shapes.js')
+const fs = require('fs');
 
 const questions = [
     //Array of questions to ask the user
@@ -56,6 +57,15 @@ function init () {
     inquirer.prompt(questions)
     .then((data) => {
         console.log(data);
+    })
+}
+
+function writeFile(filename, data) {
+    fs.writeFile(fileName, data, err => {
+        if(err) {
+            console.log('Could not genereate Logo.')
+        }
+        console.log('Logo has been generated. See createdImages folder.')
     })
 }
 
