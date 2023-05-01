@@ -1,6 +1,6 @@
 //Imports neccessary for program use.
 const inquirer = require('inquirer');
-const {Circle} = require('.lib/shapes.js')
+const {Circle} = require('./lib/shapes.js')
 const fs = require('fs');
 
 const questions = [
