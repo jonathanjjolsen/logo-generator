@@ -1,6 +1,6 @@
 //Imports neccessary for program use.
 const inquirer = require('inquirer');
-const {Circle} = require('./lib/shapes.js')
+const {circle} = require('./lib/shapes.js')
 const fs = require('fs');
 
 const questions = [
@@ -54,6 +54,8 @@ class logo{
 
 //Function to prompt the user with questions for logo generation
 function init () {
+    let svgFile = "logo.svg";
+
     inquirer.prompt(questions)
     .then((data) => {
         console.log(data);
