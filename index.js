@@ -53,22 +53,31 @@ class logo{
 }
 
 //Function to prompt the user with questions for logo generation
-function init () {
+async function init () {
     let svgFile = "logo.svg";
 
-    inquirer.prompt(questions)
-    .then((data) => {
-        console.log(data);
-    })
+    //Collects user responses for further use
+    const response = await inquirer.prompt(questions);
+
+    let userChars = response.charachters;
+    let userCharsColor = response.textColor;
+    let userShape = response.shape;
+    let userShapeColor = response.shapeColor;
+
+    console.log(userChars, userCharsColor, userShape, userShapeColor);
+
+    function writeFile(filename, data) {
+        fs.writeFile(fileName, data, err => {
+            if(err) {
+                console.log('Could not genereate Logo.')
+            }
+            console.log('Logo has been generated. See createdImages folder.')
+        })
+    }
+
+    
+    
 }
 
-function writeFile(filename, data) {
-    fs.writeFile(fileName, data, err => {
-        if(err) {
-            console.log('Could not genereate Logo.')
-        }
-        console.log('Logo has been generated. See createdImages folder.')
-    })
-}
 
 init();
