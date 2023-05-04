@@ -1,10 +1,10 @@
 //Imports neccessary for program use.
 const inquirer = require('inquirer');
-const {circle} = require('./lib/shapes.js')
+const {Circle} = require('./lib/shapes.js')
 const fs = require('fs');
 
+//Array of questions to ask the user
 const questions = [
-    //Array of questions to ask the user
     {
         name: 'charachters',
         message: 'Enter 3 charachters to be used for the logo.',
@@ -40,15 +40,19 @@ const questions = [
 ]
 
 //Logo class to create the logo based on user inputs
-class logo{
-    render(){
-        return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="200">${this.shapeElement}${this.textElement}</svg>`
+class Logo{
+    constructor(){
+        this.textElement = '';
+        this.shapeElement = '';
     }
     setText(text, color) {
-        this.text = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`
+        this.textElement = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`
     }
     setShape(shape) {
         this.shapeElement = shape.render()
+    }
+    render(){
+        return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="200">${this.shapeElement}${this.textElement}</svg>`
     }
 }
 
@@ -59,24 +63,33 @@ async function init () {
     //Collects user responses for further use
     const response = await inquirer.prompt(questions);
 
-    let userChars = response.charachters;
-    let userCharsColor = response.textColor;
+    userChars = response.charachters;
+    userCharsColor = response.textColor;
     let userShape = response.shape;
-    let userShapeColor = response.shapeColor;
+    userShapeColor = response.shapeColor;
 
-    console.log(userChars, userCharsColor, userShape, userShapeColor);
-
-    function writeFile(filename, data) {
-        fs.writeFile(fileName, data, err => {
-            if(err) {
-                console.log('Could not genereate Logo.')
-            }
-            console.log('Logo has been generated. See createdImages folder.')
-        })
+    console.log(userChars, userCharsColor, userShapeColor);
+    if(userShape === 'circle') {
+        userShape = new Circle();
     }
 
-    
-    
+    let logo = new Logo();
+    logo.setText(userChars, userCharsColor);
+    logo.setShape(userShape);
+    logoComplete = logo.render();
+
+    writeFile(svgFile,logoComplete);
+
+}
+
+//Function to write the newly created svg logo to the file system
+function writeFile(fileName, data) {
+    fs.writeFile(fileName, data, err => {
+        if(err) {
+            console.log('Could not genereate Logo.')
+        }
+        console.log('Logo has been generated. See createdImages folder.')
+    })
 }
 
 
