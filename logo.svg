@@ -1,4 +1,4 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="400" height="300">
-<polygon points="150,0 300,200 0,200" fill="black"></polygon>
-<text x="150" y="125" font-size="60" text-anchor="middle" fill="pink">JSD</text>
+<rect x="50" height="200" width="200" fill="black"></rect>
+<text x="150" y="125" font-size="60" text-anchor="middle" fill="pink">JNO</text>
 </svg>

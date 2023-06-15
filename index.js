@@ -1,6 +1,6 @@
 //Imports neccessary for program use.
 const inquirer = require('inquirer');
-const {Circle,Triangle} = require('./lib/shapes.js')
+const {Circle,Triangle,Square} = require('./lib/shapes.js')
 const fs = require('fs');
 
 //Array of questions to ask the user
@@ -75,6 +75,9 @@ async function init () {
     }
     else if(userShape === 'triangle') {
         userShape = new Triangle();
+    }
+    else if(userShape === 'square') {
+        userShape = new Square();
     }
     userShape.setColor(userShapeColor);
 
