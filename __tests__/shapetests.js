@@ -15,7 +15,7 @@ describe('triangle', () => {
         const shape = new Triangle();
         let color =('blue');
         shape.setColor(color);
-        expect(shape.render()).toEqual(`<polygon points="150,0 300,200 0,200" fill="${color}"></polygon>`)
+        expect(shape.render()).toEqual(`<polygon points="200,0 400,250 0,250" fill="${color}"></polygon>`)
     })
 })
 
@@ -24,6 +24,6 @@ describe('square', () => {
         const shape = new Square();
         let color =('blue');
         shape.setColor(color);
-        expect(shape.render()).toEqual(`<rect x="50" height="200" width="200" fill="${color}"></rect>`)
+        expect(shape.render()).toEqual(`<rect x="100" y="30" height="200" width="200" fill="${color}"></rect>`)
     })
 })
