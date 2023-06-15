@@ -62,16 +62,18 @@ async function init () {
 
     //Collects user responses for further use
     const response = await inquirer.prompt(questions);
+    console.log(response);
 
     userChars = response.charachters;
     userCharsColor = response.textColor;
-    let userShape = response.shape;
+    userShape = response.shape;
     userShapeColor = response.shapeColor;
 
     console.log(userChars, userCharsColor, userShapeColor);
     if(userShape === 'circle') {
         userShape = new Circle();
     }
+    userShape.setColor(userShapeColor);
 
     let logo = new Logo();
     logo.setText(userChars, userCharsColor);
