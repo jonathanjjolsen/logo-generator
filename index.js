@@ -46,7 +46,7 @@ class Logo{
         this.shapeElement = '';
     }
     setText(text, color) {
-        this.textElement = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`
+        this.textElement = `<text x="50%" y="50%" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`
     }
     setShape(shape) {
         this.shapeElement = shape.render()
@@ -62,14 +62,12 @@ async function init () {
 
     //Collects user responses for further use
     const response = await inquirer.prompt(questions);
-    console.log(response);
 
     userChars = response.charachters;
     userCharsColor = response.textColor;
     userShape = response.shape;
     userShapeColor = response.shapeColor;
 
-    console.log(userChars, userCharsColor, userShapeColor);
     if(userShape === 'circle') {
         userShape = new Circle();
     }
